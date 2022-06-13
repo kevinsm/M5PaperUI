@@ -29,6 +29,8 @@ public:
     return ptr;
   }
 
+  const char* getText() { return text_.c_str(); }
+
   virtual void Text(const std::string &s) { text_ = s; }
 
   virtual void Init() override;
