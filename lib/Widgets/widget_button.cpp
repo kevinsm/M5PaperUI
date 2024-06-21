@@ -11,13 +11,8 @@ void WButton::Init() {
   // This is dangerous, because in theory, label is free to call super() as
   // well.
   Label::Init();
-  downCanvas_.createCanvas(width_, height_);
-
-  if (border_style_ == BorderStyle::ROUND) {
-    downCanvas_.fillRoundRect(0, 0, width_, height_, border_radius_, 15);
-  } else {
-    downCanvas_.fillRect(0, 0, width_, height_, 15);
-  }
+  downCanvas_=*canvas_;
+  downCanvas_.ReverseColor();
 }
 
 bool WButton::Draw() {
@@ -45,12 +40,8 @@ void WIconButton::Init() {
   Widget::Init();
   canvas_->pushImage(padding_, padding_, img_w_, img_h_, img_);
 
-  downCanvas_.createCanvas(width_, height_);
-  if (border_style_ == BorderStyle::ROUND) {
-    downCanvas_.fillRoundRect(0, 0, width_, height_, border_radius_, 15);
-  } else {
-    downCanvas_.fillRect(0, 0, width_, height_, 15);
-  }
+  downCanvas_=*canvas_;
+  downCanvas_.ReverseColor();
 }
 
 void WIconButton::Reset() {
